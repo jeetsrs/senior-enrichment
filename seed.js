@@ -6,10 +6,10 @@ const students = db.models.user;
 //Create seed data
 let data = {
   campusData: [
-    {name: 'Terra'},
-    {name: 'Luna'},
-    {name: 'Mars'},
-    {name: 'Titan'}
+    {name: 'Terra', imgURL: 'http://lorempixel.com/250/250/city/'},
+    {name: 'Luna', imgURL: 'http://lorempixel.com/250/250/city/'},
+    {name: 'Mars', imgURL: 'http://lorempixel.com/250/250/city/'},
+    {name: 'Titan', imgURL: 'http://lorempixel.com/250/250/city/'}
   ],
   studentData: [
     {name: 'Ranjeet Sodhi', cohort: '1707-TERA', campusId: 1},

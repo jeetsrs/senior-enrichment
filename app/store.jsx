@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import createLogger from 'redux-logger'; // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-thunk
-
+import axios from 'axios';
 
 // ACTION TYPES
 const GET_STUDENTS = 'GET_STUDENTS';
@@ -27,7 +27,7 @@ export function addStudent (student) {
 // THUNK CREATORS
 export function fetchStudents () {
     return function thunk (dispatch) {
-      return axios.get('/api/students')
+      return axios.get('/api/student')
         .then(res => res.data)
         .then(students => {
           const action = getStudents(students);
@@ -46,4 +46,4 @@ export function fetchCampuses () {
   };
 }
 
-export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))
+export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()));
