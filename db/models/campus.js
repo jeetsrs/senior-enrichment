@@ -9,7 +9,7 @@ module.exports = db.define('campus', {
     allowNull: false
   },
   imgURL: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true
   }
 });
