@@ -13,22 +13,21 @@ import HomePage from './Home';
 export default class MainBody extends Component {
   constructor () {
     super();
-    this.state = store.getState();
+    this.state = store.getState() || {};
   }
   componentDidMount () {
     this.unsubscribe = store.subscribe(() => this.setState(store.getState()));
   }
-
   componentWillUnmount () {
     this.unsubscribe();
   }
-
   componentWillMount () {
     const campusesThunk = fetchCampuses();
     const studentsThunk = fetchStudents();
     store.dispatch(campusesThunk);
     store.dispatch(studentsThunk);
   }
+
   render() {
     return (
       <div>
@@ -48,5 +47,3 @@ export default class MainBody extends Component {
     );
   }
 };
-// <div className="container">
-// </div>

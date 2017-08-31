@@ -12,4 +12,3 @@ const HomePage = (props) => {
 };
 
 export default HomePage;
-// <img src="/WallpaperFusion.jpg" id="bg"/>

@@ -6,7 +6,7 @@ import history from '../history';
 export default class SingleStudent extends Component {
   constructor (props) {
     super(props);
-    this.state = store.getState();
+    this.state = store.getState() || {};
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleChangeStudentName = this.handleChangeStudentName.bind(this);
@@ -23,33 +23,39 @@ export default class SingleStudent extends Component {
     this.unsubscribe();
   }
 
-  handleDelete(e){
-    e.preventDefault();
-    const deleteStudent = deleteStudentThunk(e.target.value);
+  handleDelete(evt){
+    evt.preventDefault();
+    const deleteStudent = deleteStudentThunk(evt.target.value);
     store.dispatch(deleteStudent);
     history.push('/student-list');
   }
   handleChangeStudentName (evt) {
-    evt.preventDefault();
-    this.setState({student: {name: evt.target.StudentName.value}});
+    this.setState({student: {
+      id: this.state.student.id,
+      name: evt.target.value,
+      cohort: this.state.student.cohort,
+      campusId: this.state.student.campusId
+    }});
   }
   handleChangeStudentCohort (evt) {
-    evt.preventDefault();
-    this.setState({student: {cohort: evt.target.StudentCohort.value}});
+    this.setState({student: {
+      id: this.state.student.id,
+      name: this.state.student.name,
+      cohort: evt.target.value,
+      campusId: this.state.student.campusId
+    }});
   }
   handleChangeCampusId (evt) {
-    evt.preventDefault();
-    this.setState({student: {campusId: +evt.target.CampusId.value}});
+    this.setState({student: {
+      id: this.state.student.id,
+      name: this.state.student.name,
+      cohort: this.state.student.cohort,
+      campusId: +evt.target.value
+    }});
   }
   handleSubmit (evt) {
     evt.preventDefault();
-    const student = {
-      id: this.state.student.id,
-      name: evt.target.StudentName.value,
-      cohort: evt.target.StudentCohort.value,
-      campusId: +evt.target.CampusId.value
-    };
-    const updateStudent = updateStudentThunk(student);
+    const updateStudent = updateStudentThunk(this.state.student);
     store.dispatch(updateStudent);
     history.push('/student-list');
   }
@@ -58,11 +64,11 @@ export default class SingleStudent extends Component {
   render () {
     const students = this.state.students || [];
     const campuses = this.state.campuses || [];
-    const student = this.state.student || {};
+    const student = Object.assign({}, this.state.student);
     const campus = campuses.filter(campus => (campus.id == student.campusId))[0] || {};
 
     return (
-    <div className="row">
+      <div className="row">
       <div className="col-md-8 pull-left">
         <h3>{student.name}</h3>
         Cohort: {student.cohort} <br/>
@@ -73,33 +79,33 @@ export default class SingleStudent extends Component {
 
       <div className="col-md-4 pull-right">
         <div className="panel panel-danger">
-        <div className="panel-heading">
-          <h3 className="panel-title">Edit student details</h3>
-        </div>
+          <div className="panel-heading">
+            <h3 className="panel-title">Edit student details</h3>
+          </div>
 
-        <div className="panel-body">
-          <form onSubmit={this.handleSubmit}>
-          <fieldset>
-            <label>Student Name:</label>
-            <input className="form-control" type="text" name="StudentName" value={this.state.student.name} onChange={this.handleChangeStudentName}/>
-            <br/>
-            <label>Student Cohort:</label>
-            <input className="form-control" type="text" name="StudentCohort" value={this.state.student.cohort} onChange={this.handleChangeStudentCohort }/>
-            <br/>
-            <label>Campus Id:</label>&nbsp;&nbsp;&nbsp;
-              <select name="CampusId" value={this.state.student.campusId} onChange={this.handleChangeCampusId}>
-                {campuses.map(campus => (
-                  <option key={campus.id} value={campus.id}>    {campus.name}</option>
-                  )
-                )}
-              </select>
-            <br/><br/>
-            <button className="btn btn-default" type="submit">Update</button>
-          </fieldset>
-          </form>
+          <div className="panel-body">
+            <form onSubmit={this.handleSubmit}>
+            <fieldset>
+              <label>Student Name:</label>
+              <input className="form-control" type="text" name="StudentName" value={this.state.student.name} onChange={this.handleChangeStudentName}/>
+              <br/>
+              <label>Student Cohort:</label>
+              <input className="form-control" type="text" name="StudentCohort" value={this.state.student.cohort} onChange={this.handleChangeStudentCohort }/>
+              <br/>
+              <label>Campus Id:</label>&nbsp;&nbsp;&nbsp;
+                <select name="CampusId" value={this.state.student.campusId} onChange={this.handleChangeCampusId}>
+                  {campuses.map(campus => (
+                    <option key={campus.id} value={campus.id}>    {campus.name}</option>
+                    )
+                  )}
+                </select>
+              <br/><br/>
+              <button className="btn btn-default" type="submit">Update</button>
+            </fieldset>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </div>
     );
   }

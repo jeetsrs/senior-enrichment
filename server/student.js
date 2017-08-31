@@ -46,14 +46,14 @@ router.put('/:id', function (req, res, next) {
 		return student.save();
 	})
 	.then((student) => res.json(student))
-	.catch(next);
+	.catch(console.error);
 });
 
 // This route allows for the addition of data
 router.post('/', function (req, res, next) {
 	Students.create(req.body)
 	.then((student) => res.json(student))
-	.catch(next);
+	.catch(console.error);
 });
 
 // This route allows for the delete of data
@@ -64,7 +64,7 @@ router.delete('/:id', function (req, res, next) {
 		}
 	})
 	.then((student) => res.json(student))
-	.catch(next);
+	.catch(console.error);
 });
 
 module.exports = router;

@@ -62,7 +62,8 @@ export const fetchStudents = () => dispatch => {
   .then(students => {
     const action = getStudents(students);
     dispatch(action);
-  });
+  })
+  .catch(console.error);
 };
 export const fetchCampuses = () => dispatch => {
   return axios.get('/api/campus')
@@ -70,7 +71,8 @@ export const fetchCampuses = () => dispatch => {
   .then(campuses => {
     const action = getCampuses(campuses);
     dispatch(action);
-  });
+  })
+  .catch(console.error);
 };
 // POST THUNKS - to add data into the DB
 export const addNewStudent = (newStudent) => dispatch => {
@@ -79,7 +81,8 @@ export const addNewStudent = (newStudent) => dispatch => {
   .then(student => {
     const action = addStudent(student);
     dispatch(action);
-  });
+  })
+  .catch(console.error);
 };
 export const addNewCampus = (newCampus) => dispatch => {
   return axios.post('/api/campus', newCampus)
@@ -87,7 +90,8 @@ export const addNewCampus = (newCampus) => dispatch => {
   .then(campus => {
     const action = addCampus(campus);
     dispatch(action);
-  });
+  })
+  .catch(console.error);
 };
 // Delete Thunks
 export const deleteStudentThunk = (studentId) => dispatch => {
@@ -104,7 +108,8 @@ export const deleteCampusThunk = (campusId) => dispatch => {
   .then(() => {
     const action = deleteCampus(+campusId);
     dispatch(action);
-  });
+  })
+  .catch(console.error);
 };
 // Update Thunks
 export const updateStudentThunk = (student) => dispatch => {
@@ -113,7 +118,8 @@ export const updateStudentThunk = (student) => dispatch => {
   .then(student => {
     const action = updateStudent(student);
     dispatch(action);
-  });
+  })
+  .catch(console.error);
 };
 export const updateCampusThunk = (campus) => dispatch => {
   return axios.put(`/api/campus/${campus.id}`, campus)
@@ -121,7 +127,8 @@ export const updateCampusThunk = (campus) => dispatch => {
   .then(campus => {
     const action = updateCampus(campus);
     dispatch(action);
-  });
+  })
+  .catch(console.error);
 };
 
 // REDUCER

@@ -33,32 +33,32 @@ export default class AddNewStudents extends Component {
     const campuses = this.state.campuses;
     return (
       <div className="panel panel-info">
-      <div className="panel-heading">
-        <h3 className="panel-title">New student enrolment</h3>
-      </div>
-      <div className="panel-body">
-      <div className="form-group">
-        <form onSubmit={this.handleSubmit}>
-          <fieldset>
-            <label>Student Name:</label>
-            <input className="form-control" type="text" name="StudentName" placeholder="Enter student name" />
-            <br/>
-            <label>Student Cohort:</label>
-            <input className="form-control" type="text" name="StudentCohort" placeholder="Enter student cohort" />
-            <br/>
-            <label>Campus Id:</label>&nbsp;&nbsp;&nbsp;
-              <select name="CampusId">
-                {campuses.map(campus => (
-                  <option key={campus.id} value={campus.id}>          {campus.name}</option>
-                  )
-                )}
-              </select>
-            <br/><br/>
-            <button className="btn btn-default" type="submit">Enroll Student</button>
-          </fieldset>
-        </form>
-      </div>
-      </div>
+        <div className="panel-heading">
+          <h3 className="panel-title">New student enrolment</h3>
+        </div>
+        <div className="panel-body">
+          <div className="form-group">
+            <form onSubmit={this.handleSubmit}>
+              <fieldset>
+                <label>Student Name:</label>
+                <input className="form-control" type="text" name="StudentName" placeholder="Enter student name" />
+                <br/>
+                <label>Student Cohort:</label>
+                <input className="form-control" type="text" name="StudentCohort" placeholder="Enter student cohort" />
+                <br/>
+                <label>Campus Id:</label>&nbsp;&nbsp;&nbsp;
+                  <select name="CampusId">
+                    {campuses.map(campus => (
+                      <option key={campus.id} value={campus.id}>          {campus.name}</option>
+                      )
+                    )}
+                  </select>
+                <br/><br/>
+                <button className="btn btn-default" type="submit">Enroll Student</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
