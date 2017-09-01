@@ -67,7 +67,7 @@ export default class SingleCampus extends Component {
         <div className="row">
           <div className="col-sm-6 col-md-4 pull-left">
             <div className="thumbnail">
-              <img src={this.state.campus.imgURL} alt={campus.id} className="rounded" />
+              <img src={campus.imgURL} alt={campus.id} className="rounded" />
               <div className="caption">
                 <h3>{this.state.campus.name}</h3>
                 <p>
