@@ -59,7 +59,7 @@ export default class SingleCampus extends Component {
 
   render () {
     const campuses = this.state.campuses || [];
-    const campus = this.state.campuses.find(campus => (campus.id === +this.props.match.params.id) ? campus : null ) || {};
+    const campus = this.state.campuses.find(campus => (campus.id == +this.props.match.params.id) ? campus : null );
     const students = this.state.students || [];
 
     return (
@@ -67,11 +67,11 @@ export default class SingleCampus extends Component {
         <div className="row">
           <div className="col-sm-6 col-md-4 pull-left">
             <div className="thumbnail">
-              <img src={campus.imgURL} alt={campus.id} className="rounded" />
+              <img src={this.state.campus.imgURL} alt={campus.id} className="rounded" />
               <div className="caption">
-                <h3>{campus.name}</h3>
+                <h3>{this.state.campus.name}</h3>
                 <p>
-                <Link to="/add-student"><button className="btn btn-default" >Enroll Student</button></Link> <button className="btn btn-danger" value={campus.id} onClick={this.handleCampusDelete}>DELETE Campus</button>
+                <Link to="/add-student"><button className="btn btn-default" >Enroll Student</button></Link> <button className="btn btn-danger" value={this.state.campus.id} onClick={this.handleCampusDelete}>DELETE Campus</button>
                 </p>
               </div>
             </div>
