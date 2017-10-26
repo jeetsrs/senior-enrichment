@@ -1,16 +1,28 @@
-# Senior Enrichment Project
+# Sol Interplanetary Academy
 
 Make a thing!
 
+## Visual Walkthrough
+![alt text](http://sodhi.org/images/seniorEnrichment/seniorEnrichment.gif)
+
+### Campus List
+![alt text](http://sodhi.org/images/seniorEnrichment/CampusList.png)
+
+### Campus Detail
+![alt text](http://sodhi.org/images/seniorEnrichment/CampusDetail.png)
+
+### Student List
+![alt text](http://sodhi.org/images/seniorEnrichment/StudentList.png)
+
+### Student Detail
+![alt text](http://sodhi.org/images/seniorEnrichment/StudentDetail.png)
+
+
 ## Getting started
 
-1. Fork and clone this repo
-2. *Set the name of your project in `package.json`*. The skeleton intentionally ships with an invalid name.
-3. `npm install`
-4. Check out the mock-view in the `wireframes` folder
-5. Start the build process with: `npm run build-watch`
-6. In another terminal, start your app with `npm start`
-7. If you navigate to the URL you should see some UI already :) [We already have some connection code to get you started]
+1. `npm install`
+2. Start the build process with: `npm run build-watch`
+3. In another terminal, start your app with `npm start`
 
 ## Requirements
 
@@ -18,14 +30,10 @@ Make a thing!
 
 You are the CTO of the Margaret Hamilton Interplanetary Academy of JavaScript. Create a RESTful web platform that allows you to manage your students and campuses.
 
-### The tools
-
-Use at least sequelize, express, react, and redux when creating this app. You can incorporate any additional libraries or tools you wish.
-
 ### DB Design
 
 - Students
-  * have profile info (e.g. name and email)
+  * have profile info
   * must be assigned to a campus
 
 - Campuses
@@ -33,7 +41,7 @@ Use at least sequelize, express, react, and redux when creating this app. You ca
   * can have many students assigned (may have none)
 
 ### Views and Functionality
-#### See Wireframes folder for visual
+#### User Stories
 
 - Navigation: as a user I...
   * will land on **Home** by default
@@ -85,27 +93,3 @@ DELETE
 - a campus
 - a student
 ```
-
-### How to test functionality without a frontend
-- GET: use your browser
-- POST / PUT / DELETE : 
- - CLI (command line interface) with `curl`
-   - e.g. `curl -H "Content-Type: application/json" -X POST -d '{"username":"kate","password":"1234"}' http://localhost:3000/api/login`
-   - `-H`: headers. `-X`: verb. `-d`: data (must be of the type specified in headers). http://[address]:[port]/[route_path]
- - [Postman](https://www.getpostman.com/)
-   ![](https://www.dropbox.com/s/4fk3b90cd0i1a5y/postman_post.png?raw=true)
-- Databases: use Sequelize in your routes and see if you are receiving what you expect
-
-### Video Walkthrough
-Please submit a 3-minute screencast of a walk-through of the functionality *and code* for each user story in your app. E.g. for "As a user, I can create a campus", please show us that you can successfully create a campus in your app, and also the actual code that is involved in doing that (from the front-end components to the backend routes and models). We recommend using Quicktime to record the screencast (instructions on how to do that [here](https://support.apple.com/kb/PH5882?locale=en_US&viewlocale=en_US)).
-
-Once you've recorded your screencast, please *upload it to YouTube as an unlisted video*, and send us the link. This will aid us in evaluating your submission.
-
-## Evaluation
-
-- Code modularity/readability (25%)
-- Models (25%)
-- Routes (25%)
-- Frontend logic and functionality (25%)
-- Design + Bonus features (up to 10 Extra Credit points)
-
